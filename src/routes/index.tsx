@@ -6,17 +6,17 @@ import treeEmblem from "@/assets/blackwood-tree.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Blackwood Company — A Gothic Detective Visual Novel" },
+      { title: "The Hawthorne Accident — A Blackwood Company Case File" },
       {
         name: "description",
         content:
-          "Enter the Blackwood Company. A gothic detective visual novel set in a mist-shrouded European town where every silence hides a name.",
+          "A gothic detective visual novel. Some accidents leave a body. This one left a client list. Enter the Blackwood Company.",
       },
-      { property: "og:title", content: "Blackwood Company — A Gothic Detective Visual Novel" },
+      { property: "og:title", content: "The Hawthorne Accident — A Blackwood Company Case File" },
       {
         property: "og:description",
         content:
-          "A cinematic noir mystery. Step into the Blackwood Company and unravel the town's oldest secrets.",
+          "A gothic detective visual novel. Some accidents leave a body. This one left a client list.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -27,221 +27,317 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-noir-950 text-ink">
-      {/* Background layers */}
+    <div
+      className="relative w-full overflow-hidden md:h-screen md:overflow-hidden"
+      style={{ background: "var(--bg-black)", minHeight: "100vh" }}
+    >
+      {/* Background layer */}
       <div
-        className="absolute inset-0 bg-cover bg-center bw-fade-in"
-        style={{ backgroundImage: `url(${forestBg})` }}
         aria-hidden
+        className="absolute bw-drift bw-fade-in"
+        style={{
+          inset: "-3% -3% -3% -3%",
+          backgroundImage: `url(${forestBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center 30%",
+          filter: "brightness(0.55) saturate(0.9)",
+        }}
       />
-      {/* Vignette + darkening overlay */}
+      {/* Vignette */}
       <div
-        className="absolute inset-0"
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 55%, rgba(9,9,9,0.55) 0%, rgba(9,9,9,0.9) 60%, #090909 100%)",
+            "radial-gradient(ellipse 70% 90% at 80% 55%, rgba(7,7,10,0.15) 0%, rgba(7,7,10,0.55) 45%, rgba(7,7,10,0.92) 78%), linear-gradient(270deg, rgba(7,7,10,0.65) 0%, rgba(7,7,10,0.15) 42%, rgba(7,7,10,0.05) 60%, rgba(7,7,10,0.55) 100%)",
         }}
-        aria-hidden
       />
-      {/* Slow drifting fog */}
+      {/* Fog */}
       <div
+        aria-hidden
         className="pointer-events-none absolute inset-0 bw-fog mix-blend-screen"
         style={{
           background:
-            "radial-gradient(60% 40% at 30% 80%, rgba(200,161,90,0.05), transparent 70%), radial-gradient(50% 35% at 70% 70%, rgba(255,255,255,0.04), transparent 70%)",
+            "radial-gradient(50% 30% at 30% 80%, rgba(255,255,255,0.05), transparent 70%), radial-gradient(45% 28% at 70% 70%, rgba(255,255,255,0.04), transparent 70%)",
           filter: "blur(30px)",
         }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bw-fog-alt mix-blend-screen"
-        style={{
-          background:
-            "radial-gradient(45% 30% at 50% 90%, rgba(255,255,255,0.05), transparent 70%)",
-          filter: "blur(40px)",
-        }}
-        aria-hidden
-      />
-      {/* Film grain */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>\")",
-        }}
-        aria-hidden
       />
 
-      {/* Top bar — logo */}
-      <header className="relative z-20 flex items-center justify-between px-8 py-8 md:px-14 md:py-10">
-        <div className="flex items-center gap-4 bw-fade-up" style={{ animationDelay: "0.1s" }}>
-          <img
-            src={treeEmblem}
-            alt="Blackwood Company emblem"
-            className="h-12 w-12 md:h-14 md:w-14 opacity-90"
-            style={{ filter: "drop-shadow(0 0 12px rgba(200,161,90,0.15))" }}
-          />
-          <div className="leading-tight">
-            <div
-              className="text-[0.65rem] md:text-xs uppercase tracking-[0.35em]"
-              style={{ color: "var(--gold)" }}
-            >
-              Est. MDCCCLXXXVII
-            </div>
-            <div
-              className="font-serif-display text-lg md:text-xl tracking-wide"
-              style={{ color: "var(--ink)" }}
-            >
-              Blackwood Company
-            </div>
-          </div>
-        </div>
-
-        <nav
-          className="hidden md:flex items-center gap-10 text-[0.7rem] uppercase tracking-[0.35em] bw-fade-up"
-          style={{ animationDelay: "0.25s", color: "var(--ink-dim)" }}
-        >
-          <a href="#chapters" className="hover:text-[var(--gold)] transition-colors">Chapters</a>
-          <a href="#dossier" className="hover:text-[var(--gold)] transition-colors">Dossier</a>
-          <a href="#agency" className="hover:text-[var(--gold)] transition-colors">The Agency</a>
-        </nav>
-      </header>
-
-      {/* Hero */}
-      <section className="relative z-10 mx-auto grid min-h-[calc(100vh-8rem)] max-w-[1400px] grid-cols-1 items-end gap-10 px-8 pb-20 md:grid-cols-12 md:px-14 md:pb-24">
-        {/* Character — left side */}
-        <div className="relative md:col-span-5 flex md:justify-start justify-center">
-          <div className="relative bw-char-float">
-            <img
-              src={detective}
-              alt="A gothic detective of the Blackwood Company"
-              className="h-[55vh] md:h-[75vh] w-auto max-w-none object-contain bw-fade-up"
-              style={{
-                animationDelay: "0.6s",
-                animationDuration: "2s",
-                filter:
-                  "drop-shadow(0 40px 60px rgba(0,0,0,0.9)) drop-shadow(0 0 40px rgba(0,0,0,0.6))",
-              }}
-            />
-            {/* Info card near legs */}
-            <div
-              className="absolute left-1/2 md:left-[62%] bottom-2 -translate-x-1/2 md:translate-x-0 w-[240px] bw-fade-up"
-              style={{ animationDelay: "1.4s" }}
-            >
-              <div
-                className="border-l pl-4 py-2"
-                style={{ borderColor: "var(--gold)" }}
-              >
-                <div
-                  className="text-[0.6rem] uppercase tracking-[0.4em]"
-                  style={{ color: "var(--gold)" }}
-                >
-                  Subject № 007
-                </div>
-                <div
-                  className="font-serif-display text-xl mt-1"
-                  style={{ color: "var(--ink)" }}
-                >
-                  Ashford E. Vale
-                </div>
-                <div
-                  className="text-[0.65rem] uppercase tracking-[0.3em] mt-1"
-                  style={{ color: "var(--ink-dim)" }}
-                >
-                  Lead Investigator
-                </div>
-                <div
-                  className="text-[0.6rem] uppercase tracking-[0.3em] mt-3"
-                  style={{ color: "var(--ink-dim)" }}
-                >
-                  Blackwood Company · Ravensmoor Branch
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Text — center/right */}
-        <div className="relative md:col-span-7 md:pl-8 lg:pl-16">
-          <div
-            className="text-[0.7rem] md:text-xs uppercase tracking-[0.5em] mb-6 bw-fade-up"
-            style={{ animationDelay: "0.8s", color: "var(--gold)" }}
-          >
-            A Gothic Detective Visual Novel
-          </div>
-
-          <h1
-            className="font-serif-display font-light leading-[0.95] tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] bw-fade-up"
-            style={{ animationDelay: "1s", color: "var(--ink)" }}
-          >
-            The Silence
-            <br />
-            <span style={{ color: "var(--gold)" }} className="italic font-normal">
-              of Ravensmoor
-            </span>
-          </h1>
-
-          <p
-            className="mt-10 max-w-md text-sm md:text-base leading-relaxed bw-fade-up"
-            style={{ animationDelay: "1.3s", color: "var(--ink-dim)" }}
-          >
-            <span
-              className="block mb-3 text-2xl md:text-3xl font-serif-display italic"
-              style={{ color: "var(--ink)" }}
-            >
-              "Every town keeps a name it will not speak.
-              <br />
-              Ours has forgotten seven."
-            </span>
-            — from the private ledger of E. Blackwood, 1902.
-          </p>
-
-          <div className="mt-12 flex items-center gap-8 bw-fade-up" style={{ animationDelay: "1.6s" }}>
-            <a
-              href="#enter"
-              className="group relative inline-flex items-center gap-4 border px-8 py-4 text-[0.7rem] uppercase tracking-[0.4em] transition-all duration-500"
-              style={{
-                borderColor: "var(--gold)",
-                color: "var(--gold)",
-                backgroundColor: "transparent",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 0 40px rgba(200,161,90,0.35), inset 0 0 20px rgba(200,161,90,0.1)";
-                e.currentTarget.style.backgroundColor = "rgba(200,161,90,0.06)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "none";
-                e.currentTarget.style.backgroundColor = "transparent";
-              }}
-            >
-              <span>Enter the Investigation</span>
-              <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">
-                →
-              </span>
-            </a>
-
-            <div
-              className="hidden sm:block text-[0.6rem] uppercase tracking-[0.4em]"
-              style={{ color: "var(--ink-dim)" }}
-            >
-              Chapter I
-              <br />
-              Autumn MMXXVI
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom rule */}
+      {/* Brandmark — top left */}
       <div
-        className="relative z-10 mx-auto flex max-w-[1400px] items-center justify-between px-8 pb-10 md:px-14 text-[0.6rem] uppercase tracking-[0.4em] bw-fade-up"
-        style={{ animationDelay: "2s", color: "var(--ink-dim)" }}
+        className="absolute z-10 flex items-center gap-3 bw-fade-up"
+        style={{ top: "5vh", left: "5vw", animationDelay: "0.2s" }}
       >
-        <span>Ravensmoor · Northern Provinces</span>
-        <span className="hidden md:inline">Case File I / VII</span>
-        <span>© Blackwood &amp; Co.</span>
+        <img
+          src={treeEmblem}
+          alt="Blackwood Company emblem"
+          className="h-[42px] w-[42px] opacity-95"
+        />
+        <div
+          className="leading-[1.5]"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "0.72rem",
+            letterSpacing: "0.22em",
+            color: "var(--text-dim)",
+          }}
+        >
+          BLACKWOOD COMPANY
+          <strong
+            className="block font-semibold"
+            style={{ color: "var(--gold-bright)", fontSize: "0.82rem" }}
+          >
+            Discreet Investigations
+          </strong>
+        </div>
       </div>
-    </main>
+
+      {/* Detective — left */}
+      <div
+        className="relative md:absolute z-[4] flex items-end justify-center bw-char-up"
+        style={{
+          left: "3vw",
+          bottom: 0,
+          height: "96vh",
+          width: "34vw",
+          minWidth: "25vw",
+          animationDelay: "0.5s",
+        }}
+      >
+        <img
+          src={detective}
+          alt="The detective"
+          className="h-auto w-full max-h-full"
+          style={{
+            objectFit: "contain",
+            objectPosition: "bottom",
+            filter: "drop-shadow(0 30px 40px rgba(0,0,0,0.65))",
+          }}
+        />
+      </div>
+
+      {/* Case tag — near detective legs */}
+      <div
+        className="absolute z-[6] bw-fade-up"
+        style={{
+          left: "calc(3vw + 2rem)",
+          bottom: "8vh",
+          width: "15.5rem",
+          background: "var(--panel)",
+          border: "1px solid var(--hairline)",
+          padding: "1.1rem 1.3rem 1.2rem 1.3rem",
+          backdropFilter: "blur(2px)",
+          animationDelay: "1.6s",
+        }}
+      >
+        <div
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "0.62rem",
+            letterSpacing: "0.2em",
+            color: "var(--gold)",
+            textTransform: "uppercase",
+            marginBottom: "0.5rem",
+          }}
+        >
+          Subject
+        </div>
+        <div
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "1.05rem",
+            color: "var(--text-primary)",
+            letterSpacing: "0.03em",
+            marginBottom: "0.15rem",
+          }}
+        >
+          Ashford E. Blackwood
+        </div>
+        <div
+          style={{
+            fontFamily: "var(--font-body)",
+            fontStyle: "italic",
+            fontSize: "0.86rem",
+            color: "var(--text-dim)",
+            marginBottom: "0.9rem",
+          }}
+        >
+          Investigator, hired by the executor
+        </div>
+        <div
+          className="flex items-center gap-3"
+          style={{
+            borderTop: "1px solid var(--hairline)",
+            paddingTop: "0.75rem",
+            fontFamily: "var(--font-display)",
+            fontSize: "0.58rem",
+            letterSpacing: "0.22em",
+            color: "var(--text-dim)",
+            textTransform: "uppercase",
+          }}
+        >
+          <span>Notebook</span>
+          <span style={{ color: "var(--gold)" }}>·</span>
+          <span>Pen</span>
+          <span style={{ color: "var(--gold)" }}>·</span>
+          <span>Watch</span>
+        </div>
+      </div>
+
+      {/* Content — right */}
+      <div
+        className="absolute z-[5] text-right"
+        style={{
+          right: "6vw",
+          top: "50%",
+          transform: "translateY(-50%)",
+          maxWidth: "40vw",
+        }}
+      >
+        <p
+          className="relative bw-fade-up"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "0.78rem",
+            letterSpacing: "0.32em",
+            color: "var(--gold)",
+            textTransform: "uppercase",
+            margin: "0 0 1.1rem 0",
+            paddingRight: "2.4rem",
+            animationDelay: "0.9s",
+          }}
+        >
+          Case Nº 1 · A Visual Novel Mystery
+          <span
+            aria-hidden
+            className="absolute"
+            style={{
+              right: 0,
+              top: "50%",
+              width: "1.8rem",
+              height: "1px",
+              background: "var(--gold)",
+              transform: "translateY(-50%)",
+            }}
+          />
+        </p>
+        <h1
+          className="bw-fade-up"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 700,
+            fontSize: "clamp(2.4rem, 5.5vw, 4.1rem)",
+            lineHeight: 1.02,
+            letterSpacing: "0.01em",
+            color: "var(--text-primary)",
+            margin: "0 0 1.1rem 0",
+            textShadow:
+              "0 0 40px rgba(201,162,103,0.28), 0 4px 24px rgba(0,0,0,0.6)",
+            animationDelay: "1.1s",
+          }}
+        >
+          The Hawthorne
+          <br />
+          Accident
+        </h1>
+        <p
+          className="bw-fade-up"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "0.98rem",
+            letterSpacing: "0.14em",
+            color: "var(--gold-bright)",
+            textTransform: "uppercase",
+            margin: "0 0 1.6rem 0",
+            animationDelay: "1.3s",
+          }}
+        >
+          A Blackwood Company Case File
+        </p>
+        <p
+          className="ml-auto bw-fade-up"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontStyle: "italic",
+            fontSize: "1.28rem",
+            color: "var(--text-dim)",
+            lineHeight: 1.5,
+            margin: "0 0 2.4rem auto",
+            maxWidth: "30vw",
+            animationDelay: "1.5s",
+          }}
+        >
+          Some accidents leave a body. This one left a client list.
+        </p>
+        <div
+          className="flex items-center justify-end gap-6 bw-fade-up"
+          style={{ marginBottom: "2.4rem", animationDelay: "1.75s" }}
+        >
+          <a
+            href="#play"
+            className="inline-block cursor-pointer"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "0.92rem",
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "var(--bg-black)",
+              background:
+                "linear-gradient(180deg, var(--gold-bright), var(--gold))",
+              border: "none",
+              padding: "1rem 2.4rem",
+              textDecoration: "none",
+              boxShadow: "0 8px 30px rgba(201,162,103,0.25)",
+              transition: "transform 0.25s ease, box-shadow 0.25s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow =
+                "0 12px 36px rgba(201,162,103,0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "0 8px 30px rgba(201,162,103,0.25)";
+            }}
+          >
+            Download &amp; Play
+          </a>
+        </div>
+        <p
+          className="bw-fade-up"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.9rem",
+            color: "var(--text-dim)",
+            letterSpacing: "0.02em",
+            animationDelay: "1.95s",
+          }}
+        >
+          <span>Free</span>
+          <span style={{ margin: "0 0.6rem", color: "var(--gold)" }}>·</span>
+          <span>~45–60 min</span>
+          <span style={{ margin: "0 0.6rem", color: "var(--gold)" }}>·</span>
+          <span>Windows · Mac · Web</span>
+        </p>
+      </div>
+
+      {/* Case number — bottom right */}
+      <div
+        className="absolute z-[5] bw-fade-up"
+        style={{
+          right: "6vw",
+          bottom: "5vh",
+          fontFamily: "var(--font-display)",
+          fontSize: "0.72rem",
+          letterSpacing: "0.18em",
+          color: "var(--text-dim)",
+          textTransform: "uppercase",
+          animationDelay: "2.1s",
+        }}
+      >
+        Status: <strong style={{ color: "var(--gold)" }}>Open</strong>
+      </div>
+    </div>
   );
 }
