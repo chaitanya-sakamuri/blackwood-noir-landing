@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import detectiveAsset from "@/assets/detective.png.asset.json";
-import forestBg from "@/assets/forest-bg.jpg";
+import forestBg from "@/assets/blackwood-town.jpg.asset.json";
 import treeEmblem from "@/assets/blackwood-tree.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,44 +38,30 @@ function Landing() {
         className="absolute bw-drift bw-fade-in"
         style={{
           inset: "-3% -3% -3% -3%",
-          backgroundImage: `url(${forestBg})`,
+          backgroundImage: `url(${forestBg.url})`,
           backgroundSize: "cover",
-          backgroundPosition: "center 30%",
-          filter: "brightness(0.55) saturate(0.9)",
+          backgroundPosition: "center center",
         }}
       />
-      {/* Vignette */}
+
+      {/* Subtle right-side gradient for text legibility only */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 90% at 80% 55%, rgba(7,7,10,0.15) 0%, rgba(7,7,10,0.55) 45%, rgba(7,7,10,0.92) 78%), linear-gradient(270deg, rgba(7,7,10,0.65) 0%, rgba(7,7,10,0.15) 42%, rgba(7,7,10,0.05) 60%, rgba(7,7,10,0.55) 100%)",
-        }}
-      />
-      {/* Fog */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bw-fog mix-blend-screen"
-        style={{
-          background:
-            "radial-gradient(50% 30% at 30% 80%, rgba(255,255,255,0.05), transparent 70%), radial-gradient(45% 28% at 70% 70%, rgba(255,255,255,0.04), transparent 70%)",
-          filter: "blur(30px)",
+            "linear-gradient(270deg, rgba(7,7,10,0.72) 0%, rgba(7,7,10,0.35) 30%, rgba(7,7,10,0) 55%)",
         }}
       />
 
-      {/* Brandmark — top left */}
+
+      {/* Brandmark — top right */}
       <div
         className="absolute z-10 flex items-center gap-3 bw-fade-up"
-        style={{ top: "5vh", left: "5vw", animationDelay: "0.2s" }}
+        style={{ top: "5vh", right: "5vw", animationDelay: "0.2s" }}
       >
-        <img
-          src={treeEmblem}
-          alt="Blackwood Company emblem"
-          className="h-[42px] w-[42px] opacity-95"
-        />
         <div
-          className="leading-[1.5]"
+          className="leading-[1.5] text-right"
           style={{
             fontFamily: "var(--font-display)",
             fontSize: "0.72rem",
@@ -90,7 +77,13 @@ function Landing() {
             Discreet Investigations
           </strong>
         </div>
+        <img
+          src={treeEmblem}
+          alt="Blackwood Company emblem"
+          className="h-[42px] w-[42px] opacity-95"
+        />
       </div>
+
 
       {/* Detective — left */}
       <div
@@ -159,29 +152,11 @@ function Landing() {
             fontStyle: "italic",
             fontSize: "0.86rem",
             color: "var(--text-dim)",
-            marginBottom: "0.9rem",
           }}
         >
           Investigator, hired by the executor
         </div>
-        <div
-          className="flex items-center gap-3"
-          style={{
-            borderTop: "1px solid var(--hairline)",
-            paddingTop: "0.75rem",
-            fontFamily: "var(--font-display)",
-            fontSize: "0.58rem",
-            letterSpacing: "0.22em",
-            color: "var(--text-dim)",
-            textTransform: "uppercase",
-          }}
-        >
-          <span>Notebook</span>
-          <span style={{ color: "var(--gold)" }}>·</span>
-          <span>Pen</span>
-          <span style={{ color: "var(--gold)" }}>·</span>
-          <span>Watch</span>
-        </div>
+
       </div>
 
       {/* Content — right */}
