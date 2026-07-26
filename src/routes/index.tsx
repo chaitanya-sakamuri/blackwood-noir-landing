@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import detectiveAsset from "@/assets/detective.png.asset.json";
-import forestBg from "@/assets/blackwood-town.jpg.asset.json";
+import treeBg from "@/assets/tree.png.asset.json";
 import treeEmblem from "@/assets/blackwood-tree.png";
 
 
@@ -38,7 +38,7 @@ function Landing() {
         className="absolute bw-drift"
         style={{
           inset: "-3% -3% -3% -3%",
-          backgroundImage: `url(${forestBg.url})`,
+          backgroundImage: `url(${treeBg.url})`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
         }}
