@@ -55,18 +55,13 @@ function Landing() {
       />
 
 
-      {/* Brandmark — top left */}
+      {/* Brandmark — top right */}
       <div
         className="absolute z-10 flex items-center gap-3 bw-fade-up"
-        style={{ top: "5vh", left: "5vw", animationDelay: "0.2s" }}
+        style={{ top: "5vh", right: "5vw", animationDelay: "0.2s" }}
       >
-        <img
-          src={treeEmblem}
-          alt="Blackwood Company emblem"
-          className="h-[42px] w-[42px] opacity-95"
-        />
         <div
-          className="leading-[1.5]"
+          className="leading-[1.5] text-right"
           style={{
             fontFamily: "var(--font-display)",
             fontSize: "0.72rem",
@@ -82,7 +77,13 @@ function Landing() {
             Discreet Investigations
           </strong>
         </div>
+        <img
+          src={treeEmblem}
+          alt="Blackwood Company emblem"
+          className="h-[42px] w-[42px] opacity-95"
+        />
       </div>
+
 
       {/* Detective — left */}
       <div
