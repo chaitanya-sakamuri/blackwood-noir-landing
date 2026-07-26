@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import detective from "@/assets/detective.png";
+import detectiveAsset from "@/assets/detective.png.asset.json";
 import forestBg from "@/assets/forest-bg.jpg";
 import treeEmblem from "@/assets/blackwood-tree.png";
 
@@ -105,7 +105,7 @@ function Landing() {
         }}
       >
         <img
-          src={detective}
+          src={detectiveAsset.url}
           alt="The detective"
           className="h-auto w-full max-h-full"
           style={{
@@ -151,7 +151,7 @@ function Landing() {
             marginBottom: "0.15rem",
           }}
         >
-          Ashford E. Blackwood
+          Detective Blackwood
         </div>
         <div
           style={{
