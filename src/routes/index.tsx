@@ -44,25 +44,16 @@ function Landing() {
         }}
       />
 
-      {/* Vignette */}
+      {/* Subtle right-side gradient for text legibility only */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 90% at 80% 55%, rgba(7,7,10,0.15) 0%, rgba(7,7,10,0.55) 45%, rgba(7,7,10,0.92) 78%), linear-gradient(270deg, rgba(7,7,10,0.65) 0%, rgba(7,7,10,0.15) 42%, rgba(7,7,10,0.05) 60%, rgba(7,7,10,0.55) 100%)",
+            "linear-gradient(270deg, rgba(7,7,10,0.72) 0%, rgba(7,7,10,0.35) 30%, rgba(7,7,10,0) 55%)",
         }}
       />
-      {/* Fog */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bw-fog mix-blend-screen"
-        style={{
-          background:
-            "radial-gradient(50% 30% at 30% 80%, rgba(255,255,255,0.05), transparent 70%), radial-gradient(45% 28% at 70% 70%, rgba(255,255,255,0.04), transparent 70%)",
-          filter: "blur(30px)",
-        }}
-      />
+
 
       {/* Brandmark — top left */}
       <div
