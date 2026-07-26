@@ -38,7 +38,7 @@ function Landing() {
         className="absolute bw-drift"
         style={{
           inset: "-3% -3% -3% -3%",
-          backgroundImage: `url(${forestBg.url})`,
+          backgroundImage: `url(${treeBg.url})`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
         }}
