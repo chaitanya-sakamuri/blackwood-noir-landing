@@ -98,7 +98,7 @@ function Landing() {
         }}
       >
         <img
-          src={detectiveAsset.url}
+          src={detectiveAsset}
           alt="The detective"
           className="h-auto w-full max-h-full"
           style={{
