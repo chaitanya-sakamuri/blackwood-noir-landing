@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import detectiveAsset from "@/assets/detective.png.asset.json";
-import treeBg from "@/assets/tree.png.asset.json";
+import detectiveAsset from "@/assets/detective.png";
+import treeBg from "@/assets/tree.png";
 import treeEmblem from "@/assets/blackwood-tree.png";
 
 
