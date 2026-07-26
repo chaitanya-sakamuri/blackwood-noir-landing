@@ -38,12 +38,12 @@ function Landing() {
         className="absolute bw-drift bw-fade-in"
         style={{
           inset: "-3% -3% -3% -3%",
-          backgroundImage: `url(${forestBg})`,
+          backgroundImage: `url(${forestBg.url})`,
           backgroundSize: "cover",
-          backgroundPosition: "center 30%",
-          filter: "brightness(0.55) saturate(0.9)",
+          backgroundPosition: "center center",
         }}
       />
+
       {/* Vignette */}
       <div
         aria-hidden
