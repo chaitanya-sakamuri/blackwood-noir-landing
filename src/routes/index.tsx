@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import detectiveAsset from "@/assets/detective.png.asset.json";
-import forestBg from "@/assets/forest-bg.jpg";
+import forestBg from "@/assets/blackwood-town.jpg.asset.json";
 import treeEmblem from "@/assets/blackwood-tree.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
