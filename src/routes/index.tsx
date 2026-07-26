@@ -152,29 +152,11 @@ function Landing() {
             fontStyle: "italic",
             fontSize: "0.86rem",
             color: "var(--text-dim)",
-            marginBottom: "0.9rem",
           }}
         >
           Investigator, hired by the executor
         </div>
-        <div
-          className="flex items-center gap-3"
-          style={{
-            borderTop: "1px solid var(--hairline)",
-            paddingTop: "0.75rem",
-            fontFamily: "var(--font-display)",
-            fontSize: "0.58rem",
-            letterSpacing: "0.22em",
-            color: "var(--text-dim)",
-            textTransform: "uppercase",
-          }}
-        >
-          <span>Notebook</span>
-          <span style={{ color: "var(--gold)" }}>·</span>
-          <span>Pen</span>
-          <span style={{ color: "var(--gold)" }}>·</span>
-          <span>Watch</span>
-        </div>
+
       </div>
 
       {/* Content — right */}
