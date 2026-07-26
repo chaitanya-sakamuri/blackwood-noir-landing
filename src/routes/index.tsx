@@ -35,7 +35,7 @@ function Landing() {
       {/* Background layer */}
       <div
         aria-hidden
-        className="absolute bw-drift bw-fade-in"
+        className="absolute bw-drift"
         style={{
           inset: "-3% -3% -3% -3%",
           backgroundImage: `url(${forestBg.url})`,
